@@ -1,14 +1,13 @@
 defmodule FirebaseAdminEx.Request do
   @default_headers %{"Content-Type" => "application/json"}
-  @default_options Application.get_env(:firebase_admin_ex, :default_options, [])
+  # @default_options Application.get_env(:firebase_admin_ex, :default_options, [])
 
   def request(method, url, data, headers \\ %{}) do
     method
     |> HTTPoison.request(
       url,
       process_request_body(data),
-      process_request_headers(headers),
-      @default_options
+      process_request_headers(headers)
     )
   end
 
